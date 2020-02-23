@@ -1,0 +1,50 @@
+addr-blocked.ref 
+
+Counts:
+  Instructions  51791748
+  Loads         21578983
+  Stores        1283021
+  Modifies      1091709
+
+The number of instruction pages: 32
+The number of data pages: 961
+
+
+addr-matmul.ref
+
+Counts:
+  Instructions  47473963
+  Loads         21491394
+  Stores        1180752
+  Modifies      1060125
+
+The number of instruction pages: 31
+The number of data pages: 961
+
+
+addr-simpleloop.ref
+
+Counts:
+  Instructions  120406
+  Loads         50090
+  Stores        10063
+  Modifies      10006
+
+The number of instruction pages: 7
+The number of data pages: 2510
+
+
+Analysis:
+
+  In simpleloop.c, the instruction page 0x108000 is accessed 120026 times and the data page 0x1fff000000 is accessed 60100. 
+We think the struct krec a is stored in the most accessed data page and the code inside forloop is stored in the most 
+accessed instructions page.
+
+  In matmul.c, the instruction page  0x108000 is accessed 46491024 times. We think it might store the for loop indside 
+Mat_mult function. It will run n^3 times. data pages 0x1fff000000 and  0x30a000 are accessed  10301223 times and 9040220 times. 
+We think viriable A,B,C,n might store in those pages. Cause those virable are all access a lots of time in the multiplication for loop.
+
+  In blocked.c, the instruction page  0x109000 is accessed 45292495 times.  We think it might store the for loop indside 
+Blocked_mat_mult function. the data page 0x1fff000000 is accessed 14408843 and the date pages 0x30a000 is ,5083941. 
+We think viriable a_p,b_p,c_p,n_bar might store in those pages.
+
